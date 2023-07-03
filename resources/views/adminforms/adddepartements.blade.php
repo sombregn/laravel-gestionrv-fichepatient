@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Ajout departement</title>
+
+        <!-- Bootstrap -->
+        <link href="templateDashboard/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <!-- Font Awesome -->
+        <link href="templateDashboard/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+        <!-- NProgress -->
+        <link href="templateDashboard/vendors/nprogress/nprogress.css" rel="stylesheet">
+        <!-- iCheck -->
+        <link href="templateDashboard/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+        <!-- bootstrap-wysiwyg -->
+        <link href="templateDashboard/vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+        <!-- Select2 -->
+        <link href="templateDashboard/vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+        <!-- Switchery -->
+        <link href="templateDashboard/vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+        <!-- starrr -->
+        <link href="templateDashboard/vendors/starrr/dist/starrr.css" rel="stylesheet">
+        <!-- bootstrap-daterangepicker -->
+        <link href="templateDashboard/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+        <!-- Custom Theme Style -->
+        <link href="templateDashboard/build/css/custom.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    </head>
+
+    <body class="nav-md">
+        <div class="container body">
+            <div class="main_container">
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+                        @include('layouts.sidebaradmin')
+                            <!-- /sidebar menu -->
+
+                            <!-- /menu footer buttons -->
+                            <div class="sidebar-footer hidden-small">
+                            <a data-toggle="tooltip" data-placement="top" title="Settings">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>
+                            </div>
+
+                        </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                        <div class="sidebar-footer hidden-small">
+                            <a data-toggle="tooltip" data-placement="top" title="Settings">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                        <!-- /menu footer buttons -->
+                    </div>
+                </div>
+
+                <!-- top navigation -->
+                @include('layouts.nav')
+                <!-- /top navigation -->
+
+                <!-- page content -->
+                <div class="right_col" role="main">
+                    <div class="">
+                        <div class="page-title">
+                            <div class="title_left">
+                                <h3>Formulaire d'ajout de départements</h3>
+                            </div>
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12 ">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Veuillez remplir le formulaire</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a class="dropdown-item" href="#">Settings 1</a>
+                                                    </li>
+                                                    <li><a class="dropdown-item" href="#">Settings 2</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <br />
+                                        @if ($errors->any())
+                                            <div class="alert alert-danger">
+                                                <ul>
+                                                    @foreach ($errors->all() as $error)
+                                                        <li>{{ $error }}</li>
+                                                    @endforeach
+                                                </ul>
+                                            </div>
+                                        @endif
+                                        <form class="form-horizontal form-label-left" method="POST">
+                                            @csrf
+                                            <div class="form-group row ">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Nom du département*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="text" class="form-control col-md-10" placeholder="Nom du département..." name="nom">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Téléphone du département*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="text" class="form-control col-md-10" placeholder="Téléphone du département..." data-inputmask="'mask' : '(+221) 99-999-9999'" name="telephone">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Email du département*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="email" name="mail"  placeholder="Email du département..." class="form-control col-md-10" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Heurs de visite*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="text" name="heures_de_visite" id="autocomplete-custom-append" placeholder="Heurs de visite..." class="form-control col-md-10" />
+                                                </div>
+                                            </div>
+                                            <!---<div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Services offerts*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input type="text" name="services_offerts" id="autocomplete-custom-append" placeholder="Services offerts..." class="form-control col-md-10" />
+                                                </div>
+                                            </div>--->
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Services*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <select class="form-control col-md-10" name="service_id">
+                                                        <option value="">Choisir un service...</option>
+                                                        @foreach($services as $service)
+                                                            <option value="{{ $service->id }}">{{ $service->nom }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Batiments*</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <select class="form-control col-md-10" name="batiment_id">
+                                                        <option value="">Choisir un batiment...</option>
+                                                        @foreach($batiments as $batiment)
+                                                            <option value="{{ $batiment->id }}">{{ $batiment->nom }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Description <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <textarea class="form-control col-md-10" rows="3" placeholder="Description..." name="description"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="control-group row">
+                                                <label class="control-label col-md-3 col-sm-3 h6 ">Services offerts</label>
+                                                <div class="col-md-9 col-sm-9 ">
+                                                    <input id="tags_1" type="text" class="form-control col-md-10" name="services_offerts" />
+                                                </div>
+                                            </div>
+
+                                            <div class="ln_solid"></div>
+                                            <div class="form-group text-center">
+                                                <div class="col-md-9 col-sm-9  offset-md-3">
+                                                    <button type="reset" class="btn btn-primary">Effacer</button>
+                                                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                                                </div>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="templateDashboard/vendors/jquery/dist/jquery.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="templateDashboard/vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- FastClick -->
+        <script src="templateDashboard/vendors/fastclick/lib/fastclick.js"></script>
+        <!-- NProgress -->
+        <script src="templateDashboard/vendors/nprogress/nprogress.js"></script>
+        <!-- bootstrap-progressbar -->
+        <script src="templateDashboard/vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+        <!-- iCheck -->
+        <script src="templateDashboard/vendors/iCheck/icheck.min.js"></script>
+        <!-- bootstrap-daterangepicker -->
+        <script src="templateDashboard/vendors/moment/min/moment.min.js"></script>
+        <script src="templateDashboard/vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap-wysiwyg -->
+        <script src="templateDashboard/vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+        <script src="templateDashboard/vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+        <script src="templateDashboard/vendors/google-code-prettify/src/prettify.js"></script>
+        <!-- jQuery Tags Input -->
+        <script src="templateDashboard/vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+        <!-- Switchery -->
+        <script src="templateDashboard/vendors/switchery/dist/switchery.min.js"></script>
+        <!-- Select2 -->
+        <script src="templateDashboard/vendors/select2/dist/js/select2.full.min.js"></script>
+        <!-- Parsley -->
+        <script src="templateDashboard/vendors/parsleyjs/dist/parsley.min.js"></script>
+        <!-- Autosize -->
+        <script src="templateDashboard/vendors/autosize/dist/autosize.min.js"></script>
+        <!-- jQuery autocomplete -->
+        <script src="templateDashboard/vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+        <!-- starrr -->
+        <script src="templateDashboard/vendors/starrr/dist/starrr.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="templateDashboard/build/js/custom.min.js"></script>
+
+        <script src="templateDashboard/vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+
+    </body>
+</html>
